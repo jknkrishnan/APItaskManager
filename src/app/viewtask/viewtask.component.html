@@ -1,0 +1,65 @@
+<div class="container ">
+  <div class="row ">
+    <div>
+      <label>task:</label>
+      <input type="text" name="task">
+    </div>
+    <div>
+      <label>parent task:</label>
+      <input type="text" name="parent">
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <label>Priority From:</label>
+      <input type="text" name="from">
+    </div>
+    <div>
+      <label>Priority To:</label>
+      <input type="text" name="to">
+    </div>
+    <div>
+      <label>start date: </label>
+      <input type="date" name="strdate">
+    </div>
+    <div>
+      <label>end date: </label>
+      <input type="date" name="enddate">
+    </div>
+  </div>
+</div>
+<br>
+<div class="container ">
+  <div class="row ">
+    <div>
+      <label>task</label>
+    </div>
+    <div>
+      <label>parent</label>
+    </div>
+    <div>
+      <label>task</label>
+    </div>
+    <div>
+      <label>priority</label>
+    </div>
+    <div>
+      <label>start</label>
+    </div>
+    <div>
+      <label>end</label>
+    </div>
+  </div>
+  <div class="row ">
+    <label>task1</label>
+    <label>parent1</label>
+    <label>priority1</label>
+    <label>01/01/2016</label>
+    <label>01/01/2016</label>
+    <a type="button" class="btn btn-link" routerLink="/edittask">edit Task</a>
+    <a type="button" class="btn btn-link" routerLink="/deletetask">delete Task</a>
+  </div>
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>  
+</div>
