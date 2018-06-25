@@ -12,13 +12,22 @@ export class TaskserviceService {
 
   GetTasks() : Observable<any>
   {
-    
-   return this._http.get<any>(environment.url+"Task");     
+    return this._http.get<any>(environment.url+"Task");     
   }
 
-  GetTasksById()
+  GetTasksById(id:number) : Observable<any>
   {
+    return this._http.get<any>(environment.url+"Task/"+id);  
+  }
 
+  getParentTasks(): Observable<any>
+  {
+    return this._http.get<any>(environment.url+"Parent");  
+  }
+
+  getParentTasksByID(id:number) : Observable<any>
+  {
+    return this._http.get<any>(environment.url+"Parent/"+id);  
   }
 
 
