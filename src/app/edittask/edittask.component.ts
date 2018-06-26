@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Task} from '../task';
-import {Parenttask} from '../parenttask';
+import {Parent} from '../parent';
 
 @Component({
   selector: 'app-edittask',
@@ -10,10 +10,10 @@ import {Parenttask} from '../parenttask';
 export class EdittaskComponent implements OnInit {
 
   item : Task;
-  itemparent : Parenttask;
+  itemparent : Parent;
   constructor() {
     this.item = new Task();
-    this.itemparent = new Parenttask();
+    this.itemparent = new Parent();
   }
 
   ngOnInit() {

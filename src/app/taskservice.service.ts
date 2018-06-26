@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
+import {Task} from './task';
+import {Parent} from './parent';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskserviceService {
 
+  httpOption = {headers : new HttpHeaders({'Content-Type':'application/json'})}
+  //Observa;
   constructor(private _http : HttpClient) { }
 
   GetTasks() : Observable<any>
@@ -30,5 +34,16 @@ export class TaskserviceService {
     return this._http.get<any>(environment.url+"Parent/"+id);  
   }
 
+  Postparent(item : Parent) : Observable<any>
+  {    
+    return this._http.post<any>(environment.url+"Parent",JSON.stringify(item),this.httpOption);        
+  }
+
+  PostTask(item : Task) : Observable<Task>
+  {
+    return this._http.post<any>(environment.url+"Task",JSON.stringify(item),this.httpOption);        
+  }
+
+  
 
 }

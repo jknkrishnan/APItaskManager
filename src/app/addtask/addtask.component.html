@@ -5,7 +5,7 @@
   <div class="col-10">
     <input class="form-control" type="text" 
     id="example-text-input" name="task" 
-    [(ngModel)]="item.task">
+    [(ngModel)]="item.TaskDesc">
   </div>
 </div>
 <div class="form-group row">
@@ -27,7 +27,7 @@
   <div class="col-10">
     <input class="form-control" type="text" 
     id="example-text-input" name="Parent"
-    [(ngModel)]="itemparent.parent_task">
+    [(ngModel)]="itemparent.Parent_Task">
   </div>
 </div>
 <div class="form-group row">
@@ -36,7 +36,7 @@
   <div class="col-10">
     <input class="form-control" type="date"
     id="example-text-input" name="strdate" 
-    [(ngModel)]="item.start_date">
+    [(ngModel)]="item.strDate">
   </div>
 </div>
 <div class="form-group row">
@@ -45,17 +45,17 @@
   <div class="col-10">
     <input class="form-control" type="date" 
     id="example-text-input" name="enddate" 
-    [(ngModel)]="item.end_date">
+    [(ngModel)]="item.endDate">
   </div>
 </div>
 <input id="id_ok" class="btn btn-space" 
-value="Submit" type="button">
+value="Submit" type="button" (click)="Submit()">
 <input id="id_cancel" class="btn btn-space" 
 value="Reset" type="button">
 <pre>  
-  {{itemparent.parent_task}}
-  {{item.task}}
-  {{item.start_date}}
-  {{item.end_date}}
+  {{itemparent.Parent_Task}}
+  {{item.TaskDesc}}
+  {{item.strDate}}
+  {{item.endDate}}
   {{item.priority}}
 </pre>
