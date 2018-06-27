@@ -4,7 +4,7 @@
   class="col-2 col-form-label">Task:</label>
   <div class="col-10">
     <input class="form-control" type="text" 
-    id="example-text-input" name="task" 
+    id="example-text-input" required  name="task" 
     [(ngModel)]="item.TaskDesc">
   </div>
 </div>
@@ -48,14 +48,5 @@
     [(ngModel)]="item.endDate">
   </div>
 </div>
-<input id="id_ok" class="btn btn-space" 
-value="Submit" type="button" (click)="Submit()">
-<input id="id_cancel" class="btn btn-space" 
-value="Reset" type="button">
-<pre>  
-  {{itemparent.Parent_Task}}
-  {{item.TaskDesc}}
-  {{item.strDate}}
-  {{item.endDate}}
-  {{item.priority}}
-</pre>
+<input id="id_ok" class="btn btn-space" value="Submit" type="button" (click)="submit()" [disabled]="!visible">
+<input id="id_cancel" class="btn btn-space" value="Reset" type="button" (click)="reset()">
