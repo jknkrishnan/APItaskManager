@@ -1,0 +1,67 @@
+<p></p>
+<div class="form-group row">
+  <label for="example-text-input" 
+  class="col-2 col-form-label">Task:</label>
+  <div class="col-10">
+    <input class="form-control" type="text" 
+    id="example-text-input" required  name="task" 
+    [(ngModel)]="item.TaskDesc">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-text-input" 
+  class="col-2 col-form-label">Priority:</label>
+  <div class="col-10">
+  <div class="slidecontainer">
+      <input type="range" min="0" max="30" 
+      class="slider" 
+      id="myRange" 
+      [(ngModel)]="item.priority"
+      value = "item.priority">
+    </div>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-text-input"
+  class="col-2 col-form-label">Parent Task:</label>
+  <div class="col-10">
+    <input class="form-control" type="text" 
+    id="example-text-input" name="Parent"
+    [(ngModel)]="item.parent_name">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-text-input"
+  class="col-2 col-form-label">Start Date:</label>
+  <div class="col-10">
+    <input class="form-control" type="date"
+    id="example-text-input" name="strdate" 
+    [(ngModel)]="newstartDate">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-text-input" 
+  class="col-2 col-form-label">End Date:</label>
+  <div class="col-10">
+    <input class="form-control" type="date" 
+    id="example-text-input" name="enddate" 
+    [(ngModel)]="newendDate">
+  </div>
+</div>
+<input id="id_ok" class="col-2 btn btn-space" value="Update" type="button" (click)="submit()" 
+[disabled]="!visible" routerLink="/viewtask">
+<input id="id_cancel" class="btn btn-space" value="Cancel" type="button" 
+routerLink="/viewtask">
+<div *ngIf="msg!=''">
+  <p>{{msg}}</p>
+</div>
+<pre>
+  {{item.TaskDesc}}
+  {{item.priority}}
+  {{item.parent_name}}
+  {{newstartDate}}
+  {{newendDate}}
+</pre>
+<div class="row">
+   <router-outlet></router-outlet>
+</div>

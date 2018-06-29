@@ -14,27 +14,27 @@ export class TaskserviceService {
   //Observa;
   constructor(private _http : HttpClient) { }
 
-  GetTasks() : Observable<any>
+  GetTasks() : Observable<Task[]>
   {
     return this._http.get<any>(environment.url+"Task");     
   }
 
-  GetTasksById(id:number) : Observable<any>
+  GetTasksById(id:number) : Observable<Task[]>
   {
     return this._http.get<any>(environment.url+"Task/"+id);  
   }
 
-  getParentTasks(): Observable<any>
+  getParentTasks(): Observable<Parent[]>
   {
     return this._http.get<any>(environment.url+"Parent");  
   }
 
-  getParentTasksByID(id:number) : Observable<any>
+  getParentTasksByID(id:number) : Observable<Parent[]>
   {
     return this._http.get<any>(environment.url+"Parent/"+id);  
   }
 
-  Postparent(item : Parent) : Observable<any>
+  Postparent(item : Parent) : Observable<Parent>
   {    
     return this._http.post<any>(environment.url+"Parent",JSON.stringify(item),this.httpOption);        
   }
@@ -42,8 +42,10 @@ export class TaskserviceService {
   PostTask(item : Task) : Observable<Task>
   {
     return this._http.post<any>(environment.url+"Task",JSON.stringify(item),this.httpOption);        
-  }
+  } 
 
-  
-
+  PostTaskById(item : Task) : Observable<Task>
+  {
+    return this._http.put<any>(environment.url+"Task",JSON.stringify(item),this.httpOption);        
+  } 
 }

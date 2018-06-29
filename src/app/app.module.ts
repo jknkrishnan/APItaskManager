@@ -10,16 +10,13 @@ import { ViewtaskComponent } from './viewtask/viewtask.component';
 import { TaskmanagerComponent } from './taskmanager/taskmanager.component';
 import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { EdittaskComponent } from './edittask/edittask.component';
-import { DelettaskComponent } from './delettask/delettask.component';
 
 
 
 const appRoute : Routes = [
   { path:'addtask', component:AddtaskComponent},
   { path:'viewtask', component:ViewtaskComponent},
-  { path:'edittask', component:EdittaskComponent},
-  { path:'deletetask', component:DelettaskComponent}
+  { path:'updatetask/:id', component:UpdatetaskComponent}
 ];
 
 @NgModule({
@@ -29,8 +26,6 @@ const appRoute : Routes = [
     UpdatetaskComponent,
     ViewtaskComponent,
     TaskmanagerComponent,
-    EdittaskComponent,
-    DelettaskComponent
   ],
   imports: [
     BrowserModule,
