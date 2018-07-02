@@ -5,8 +5,10 @@ export class Task {
     strDate : Date;
     endDate : Date;
     priority : number;
+    delete_flag : number;
     parent_name : string; 
     newstrDate : string;  
     newendDate : string;
+    
 }
 
