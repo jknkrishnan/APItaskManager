@@ -1,7 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
 import { AddtaskComponent } from './addtask/addtask.component';
@@ -10,6 +11,7 @@ import { ViewtaskComponent } from './viewtask/viewtask.component';
 import { TaskmanagerComponent } from './taskmanager/taskmanager.component';
 import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { FilterPipe} from './viewtask/filter.pipe';
 
 
 
@@ -26,6 +28,7 @@ const appRoute : Routes = [
     UpdatetaskComponent,
     ViewtaskComponent,
     TaskmanagerComponent,
+    FilterPipe 
   ],
   imports: [
     BrowserModule,

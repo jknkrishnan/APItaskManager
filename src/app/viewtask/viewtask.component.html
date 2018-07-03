@@ -1,19 +1,27 @@
-<p></p>
+<p></p> 
 <div class="container">    
     <div class="row">
         <div class="panel panel-primary filterable">
+            <div class="panel-heading">                                
+            </div>
             <table class="table">
                 <thead>
                     <tr class="filters">
-                        <th><input type="text" class="form-control" placeholder="Task" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Parent" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Priority" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Start Date" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="End Date" disabled></th>                        
+                        <th><input type="text" class="form-control" placeholder="Task" enabled 
+                            [(ngModel)]="searchText"></th>
+                        <th><input type="text" class="form-control" placeholder="Parent" enabled
+                            [(ngModel)]="searchParent"></th>
+                        <th><input type="text" class="form-control" placeholder="Priority" enabled
+                            [(ngModel)]="searchPriority"></th>
+                        <th><input type="text" class="form-control" placeholder="Start Date" enabled
+                            [(ngModel)]="searchStartDate"></th>
+                        <th><input type="text" class="form-control" placeholder="End Date" enabled
+                            [(ngModel)]="searchEndDate"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let task of tasks">
+                    
+                    <tr *ngFor="let task of tasks|filter:searchText:searchParent:searchPriority:searchStartDate:searchEndDate">
                         <td>{{task.TaskDesc}}</td>
                         <td >{{task.parent_name}}</td>
                         <td>{{task.priority}}</td>

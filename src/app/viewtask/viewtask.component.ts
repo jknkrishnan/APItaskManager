@@ -44,11 +44,6 @@ export class ViewtaskComponent implements OnInit {
     })
   }
 
-  GetTaskById(id:number)
-  {
-    this._task.GetTasksById(id).subscribe((obj) => {})
-  }
-
   GetAllParenttasks()
   {
     this._task.getParentTasks().subscribe((obj) => {})
