@@ -25,8 +25,8 @@
                         <td>{{task.TaskDesc}}</td>
                         <td >{{task.parent_name}}</td>
                         <td>{{task.priority}}</td>
-                        <td>{{task.newstrDate}}</td>
-                        <td>{{task.newendDate}}</td>
+                        <td>{{task.strDate | date  }}</td>
+                        <td>{{task.endDate | date  }}</td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Edit">
                           <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" 
                           data-target="#edit" routerLink="/updatetask/{{ task.Task_Id }}"

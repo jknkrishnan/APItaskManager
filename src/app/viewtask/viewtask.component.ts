@@ -15,8 +15,8 @@ export class ViewtaskComponent implements OnInit {
   str : string;
   item : Task;
   _def : Task[];
-  newstartDate : string;
-  newendDate: string;
+  //newstartDate : string;
+  //newendDate: string;
   itemparent : Parent; 
 
  
@@ -32,11 +32,11 @@ export class ViewtaskComponent implements OnInit {
 
   GetAlltasks()
   {
-    this._task.GetTasks().subscribe((obj) => {
+    this._task.GetTasks().subscribe((obj) => {   
       this.tasks = obj;          
-      this.tasks.forEach(element => {        
-        element.newstrDate = new Date(element.strDate).toISOString().slice(0,10);        
-        element.newendDate = new Date(element.endDate).toISOString().slice(0,10);
+      this.tasks.forEach(element => {               
+        //element.newstrDate = new Date(element.strDate).toString().slice(0,10);        
+        //element.newendDate = new Date(element.endDate).toString().slice(0,10);        
         this._task.getParentTasksByID(element.Parent_Id ).subscribe((parent) => {           
           element.parent_name = parent[0].Parent_Task;      
         })  
@@ -73,10 +73,10 @@ delTaskinfo(task_id : number) : Task
         this.item.Parent_Id = this._def[0].Parent_Id;
         this.item.TaskDesc = this._def[0].TaskDesc;
         this.item.priority = this._def[0].priority;
-        this.newstartDate = new Date(this._def[0].strDate).toISOString().slice(0,10); 
+        //this.newstartDate = new Date(this._def[0].strDate).toString().slice(0,10); 
         this.item.strDate =  this._def[0].strDate;           
         this.item.endDate = this._def[0].endDate; 
-        this.newendDate = new Date(this._def[0].endDate).toISOString().slice(0,10); 
+        //this.newendDate = new Date(this._def[0].endDate).toString().slice(0,10); 
         this.item.delete_flag = 1;
         this._task.PostTaskById(this.item).subscribe((taskobj) => {  });
      });  

@@ -7,8 +7,8 @@ export class Task {
     priority : number;
     delete_flag : number;
     parent_name : string; 
-    newstrDate : string;  
-    newendDate : string;
+    //newstrDate : string;  
+    //newendDate : string;
     
 }
 

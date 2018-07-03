@@ -25,12 +25,12 @@ export class FilterPipe implements PipeTransform {
                     return false;
                 }
 
-                if (searchStartDate && myfilter.newstrDate.toString().toLowerCase().indexOf(searchStartDate.toLowerCase()) === -1)
+                if (searchStartDate && myfilter.strDate.toString().toLowerCase().indexOf(searchStartDate.toLowerCase()) === -1)
                 {
                     return false;
                 }
 
-                if (searchEndDate && myfilter.newendDate.toString().toLowerCase().indexOf(searchEndDate.toLowerCase()) === -1)
+                if (searchEndDate && myfilter.endDate.toString().toLowerCase().indexOf(searchEndDate.toLowerCase()) === -1)
                 {
                     return false;
                 }
