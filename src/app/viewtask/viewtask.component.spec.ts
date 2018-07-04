@@ -1,4 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Task } from '../task';
+import { Parent } from '../parent';
+import {FilterPipe} from './filter.pipe'
+
 
 import { ViewtaskComponent } from './viewtask.component';
 
@@ -8,7 +15,14 @@ describe('ViewtaskComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewtaskComponent ]
+      declarations: [ ViewtaskComponent,FilterPipe ],
+      imports: [
+        FormsModule,
+        RouterTestingModule,
+        HttpClientModule        
+      ],
+      providers: [
+       ]
     })
     .compileComponents();
   }));

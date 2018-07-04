@@ -18,6 +18,7 @@ export class AddtaskComponent implements OnInit {
   msg : string;
   priority : number = 20; 
   parent_id : number; 
+  submitResult: any = null;
 
   @HostListener('mouseover') mouseover(eventdata : Event)
   {
@@ -38,7 +39,7 @@ export class AddtaskComponent implements OnInit {
   }
 
   submit()
-  {     
+  {   
     if (this.item.strDate > this.item.endDate)
     {
       this.msg = "Start date is greater than End date";
@@ -61,7 +62,8 @@ export class AddtaskComponent implements OnInit {
         if (this.parent_id > 0)
         {          
           this.item.Parent_Id = this.parent_id; 
-          this._task.PostTask(this.item).subscribe((taskobj) => {                  
+          this._task.PostTask(this.item).subscribe((taskobj) => {               
+            this.submitResult = taskobj[0].Task_Id;           
           });          
          }
          else
