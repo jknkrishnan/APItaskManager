@@ -11,4 +11,9 @@ export class TaskmanagerComponent implements OnInit {
   ngOnInit() {
   }
 
+  refresh()
+  {
+    window.location.reload();
+  }
+
 }

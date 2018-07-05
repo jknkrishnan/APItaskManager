@@ -17,6 +17,7 @@ import { FilterPipe} from './viewtask/filter.pipe';
 const appRoute : Routes = [
   { path:'addtask', component:AddtaskComponent},
   { path:'viewtask', component:ViewtaskComponent},
+  { path:'viewtask2', component:ViewtaskComponent},
   { path:'updatetask/:id', component:UpdatetaskComponent}
 ];
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, HostBinding } from '@angular/core';
+import { Component, OnInit, HostListener, HostBinding, Output,EventEmitter } from '@angular/core';
 import {Task} from '../task';
 import {Parent} from '../parent';
 import { TaskserviceService } from '../taskservice.service';
@@ -6,12 +6,13 @@ import { Observable } from 'rxjs/internal/Observable';
 import { ActivatedRoute,Params,Router } from '@angular/router';
 import { Console } from '@angular/core/src/console';
 
+
 @Component({
   selector: 'app-updatetask',
   templateUrl: './updatetask.component.html',
   styleUrls: ['./updatetask.component.css']
 })
-export class UpdatetaskComponent implements OnInit {
+export class UpdatetaskComponent implements OnInit {  
   item : Task;
   _def : Task[];
   visible : boolean = false;  
@@ -32,7 +33,8 @@ export class UpdatetaskComponent implements OnInit {
     this.visible = this.setVisibility();
   }
  
-  constructor(private _task : TaskserviceService, private route : ActivatedRoute, private _router : Router) {
+  constructor(private _task : TaskserviceService, private route : ActivatedRoute, private _router : Router)
+   {
     this.item = new Task(); 
     this.itemparent  = new Parent();
   }
@@ -92,10 +94,9 @@ export class UpdatetaskComponent implements OnInit {
             });           
           });
          }
-      })         
-    }  
-    //alert(this._obj[0].Task_Id); 
-    this._router.navigate(['/viewtask'])
+      }) 
+      this.msg = "Tasks sucessfully updated";              
+    }                     
   }
 
   setVisibility() : boolean

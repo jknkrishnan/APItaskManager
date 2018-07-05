@@ -48,7 +48,7 @@
     [(ngModel)]="item.endDate">
   </div>
 </div>
-<input id="id_ok" class="btn btn-space" value="Submit" type="button" (click)="submit()" [disabled]="!visible" routerLink="/viewtask">
+<input id="id_ok" class="btn btn-space" value="Submit" type="button" (click)="submit()" [disabled]="!visible">
 <input id="id_cancel" class="btn btn-space" value="Reset" type="button" (click)="reset()">
 <div *ngIf="msg!=''">
   <p>{{msg}}</p>

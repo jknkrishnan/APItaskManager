@@ -85,7 +85,8 @@ export class AddtaskComponent implements OnInit {
             });          
           });
          }
-      })         
+      })  
+      this.msg = "Tasks sucessfully added";          
     }
 
   } 
