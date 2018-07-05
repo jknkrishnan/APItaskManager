@@ -39,12 +39,12 @@ export class TaskserviceService {
     return this._http.post<any>(environment.url+"Parent",JSON.stringify(item),this.httpOption);        
   }
 
-  PostTask(item : Task) : Observable<Task>
+  PostTask(item : Task) : Observable<Task[]>
   {
     return this._http.post<any>(environment.url+"Task",JSON.stringify(item),this.httpOption);        
   } 
 
-  PostTaskById(item : Task) : Observable<Task>
+  PostTaskById(item : Task) : Observable<Task[]>
   {
     return this._http.put<any>(environment.url+"Task",JSON.stringify(item),this.httpOption);        
   } 

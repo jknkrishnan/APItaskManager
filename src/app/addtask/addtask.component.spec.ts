@@ -1,15 +1,16 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, tick, fakeAsync, flushMicrotasks } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Task } from '../task';
-
+import { fakeService, Interceptor } from '../app.interceptor';
 import { AddtaskComponent } from './addtask.component';
 import { Parent } from 'src/app/parent';
 
 describe('AddtaskComponent', () => {
   let component: AddtaskComponent;
   let fixture: ComponentFixture<AddtaskComponent>;
+  //let spy: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -17,9 +18,14 @@ describe('AddtaskComponent', () => {
       imports: [
         FormsModule,
         RouterTestingModule,
-        HttpClientModule
+        HttpClientModule        
       ],
       providers: [
+        /*  {
+        provide: HTTP_INTERCEPTORS,
+        useClass: Interceptor,
+        multi: true 
+      }  */
        ]
     })
     .compileComponents();
@@ -35,15 +41,10 @@ describe('AddtaskComponent', () => {
     expect(component).toBeTruthy();
   });
 
- /*  it('On Submitting add task form when parent already exists', () => {
-    component.item = new Task();
- component.itemparent = new Parent();
-    component.item.TaskDesc = 'test5';
-    component.item.priority = 1;
-    component.item.strDate = new Date("2018-07-05");
-    component.item.endDate = new Date("2018-07-06");
-    component.itemparent.Parent_Task = "1223";    
-    component.submit();
-    expect(component.submitResult); 
-  }); */
+ it('On Submitting add task form when parent already exists',fakeAsync (() => {    
+    
+  })); 
+
+  it('On Submitting add task form when parent does not exists',async() => {   
+  }); 
 });

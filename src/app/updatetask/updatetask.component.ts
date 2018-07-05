@@ -20,10 +20,8 @@ export class UpdatetaskComponent implements OnInit {
   msg : string;
   priority : number = 20; 
   parent_id : number; 
-  _task_id : number;
-  //newstartDate : string;
-  //newendDate: string;
-  
+  _task_id : number;  
+  //_obj : Task[];  
 
   @HostListener('mouseover') mouseover(eventdata : Event)
   {
@@ -49,10 +47,8 @@ export class UpdatetaskComponent implements OnInit {
   }
 
   submit()
-  {   
-    
-    //this.item.strDate = new Date(this.newstartDate);
-    //this.item.endDate = new Date(this.newendDate);    
+  {  
+      
     if (this.item.strDate > this.item.endDate)
     {
       this.msg = "Start date is greater than End date";
@@ -75,7 +71,11 @@ export class UpdatetaskComponent implements OnInit {
         if (this.parent_id > 0)
         {          
           this.item.Parent_Id = this.parent_id; 
-           this._task.PostTaskById(this.item).subscribe((taskobj) => {                  
+           this._task.PostTaskById(this.item).subscribe((taskobj) => {
+/*              this._obj = taskobj;             
+            this._obj.forEach(element => {
+              alert(element.Task_Id);
+            });    */           
           });  
          }
          else
@@ -83,13 +83,18 @@ export class UpdatetaskComponent implements OnInit {
           //post parent and task
           this.itemparent.Parent_Task = this.item.parent_name;
           this._task.Postparent(this.itemparent).subscribe((parentobj) => {                                            
-            this.item.Parent_Id = parentobj[0].Parent_Id;
-            this._task.PostTaskById(this.item).subscribe((taskobj) => {                      
+            this.item.Parent_Id = parentobj[0].Parent_Id;            
+            this._task.PostTaskById(this.item).subscribe((taskobj) => {                    
+               /* this._obj = taskobj;               
+              this._obj.forEach(element => {
+                alert(element.Task_Id);
+              });  */
             });           
           });
          }
       })         
     }  
+    //alert(this._obj[0].Task_Id); 
     this._router.navigate(['/viewtask'])
   }
 
@@ -103,21 +108,21 @@ export class UpdatetaskComponent implements OnInit {
   getTaskinfo(task_id : number)
   {
       this._task.GetTasksById(task_id).subscribe((obj) => {       
-      this._def = obj;          
-      this._def.forEach(element => {
-        this._task.getParentTasksByID(element.Parent_Id ).subscribe((parent) => {                     
-          element.parent_name = parent[0].Parent_Task;      
-          this.item.parent_name = element.parent_name; 
-        })  
-      }); 
-      this.item.Task_Id = this._def[0].Task_Id;
-      this.item.Parent_Id = this._def[0].Parent_Id;
-      this.item.TaskDesc = this._def[0].TaskDesc;
-      this.item.priority = this._def[0].priority;
-      //this.newstartDate = new Date(this._def[0].strDate).toISOString().slice(0,10); 
-      this.item.strDate =  this._def[0].strDate;           
-      this.item.endDate = this._def[0].endDate; 
-      //this.newendDate = new Date(this._def[0].endDate).toISOString().slice(0,10); 
-      });          
-  }
+        this._def = obj;          
+        this._def.forEach(element => {
+          this._task.getParentTasksByID(element.Parent_Id ).subscribe((parent) => {                     
+            element.parent_name = parent[0].Parent_Task;      
+            this.item.parent_name = element.parent_name; 
+          })  
+        }); 
+        this.item.Task_Id = this._def[0].Task_Id;
+        this.item.Parent_Id = this._def[0].Parent_Id;
+        this.item.TaskDesc = this._def[0].TaskDesc;
+        this.item.priority = this._def[0].priority;        
+        this.item.strDate =  this._def[0].strDate;           
+        this.item.endDate = this._def[0].endDate;         
+      });     
+      //alert(this._def[0].Task_Id);      
+    }
+    
 }

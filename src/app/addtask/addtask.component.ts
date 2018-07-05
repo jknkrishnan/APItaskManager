@@ -11,14 +11,15 @@ import { Observable } from 'rxjs/internal/Observable';
   styleUrls: ['./addtask.component.css']
 })
 export class AddtaskComponent implements OnInit {
-  item : Task;
+  item : Task;  
   itemparent : Parent;  
   visible : boolean = false;
   error : boolean = false;
   msg : string;
   priority : number = 20; 
   parent_id : number; 
-  submitResult: any = null;
+  task_id : number;  
+  _obj : Task[];
 
   @HostListener('mouseover') mouseover(eventdata : Event)
   {
@@ -38,11 +39,11 @@ export class AddtaskComponent implements OnInit {
   ngOnInit() {
   }
 
-  submit()
+  submit() 
   {   
     if (this.item.strDate > this.item.endDate)
     {
-      this.msg = "Start date is greater than End date";
+      this.msg = "Start date is greater than End date";      
     }
     else
     {
@@ -62,8 +63,12 @@ export class AddtaskComponent implements OnInit {
         if (this.parent_id > 0)
         {          
           this.item.Parent_Id = this.parent_id; 
-          this._task.PostTask(this.item).subscribe((taskobj) => {               
-            this.submitResult = taskobj[0].Task_Id;           
+          this._task.PostTask(this.item).subscribe((taskobj) => {     
+            /* this.someMethod(taskobj);
+              this._obj = taskobj;
+              this._obj.forEach(element => {
+                alert(element.Task_Id);
+              }); */  
           });          
          }
          else
@@ -71,12 +76,18 @@ export class AddtaskComponent implements OnInit {
           //post parent and task
           this._task.Postparent(this.itemparent).subscribe((parentobj) => {                                            
             this.item.Parent_Id = parentobj[0].Parent_Id;
-            this._task.PostTask(this.item).subscribe((taskobj) => {                      
+            this._task.PostTask(this.item).subscribe((taskobj) => {   
+              /* this.someMethod(taskobj);
+               this._obj = taskobj;
+              this._obj.forEach(element => {
+                alert(element.Task_Id);
+              });  */               
             });          
           });
          }
       })         
     }
+
   } 
 
   reset()
@@ -98,5 +109,9 @@ export class AddtaskComponent implements OnInit {
     return ((this.item.TaskDesc != null) && (this.item.strDate != null) 
     && (this.item.endDate != null) && (this.item.priority != null) && 
     (this.itemparent.Parent_Task != null))
+  }
+
+  someMethod(taskobj) {
+    console.log(taskobj);
   }
 }

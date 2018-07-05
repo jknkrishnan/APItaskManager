@@ -12,8 +12,7 @@ import { TaskmanagerComponent } from './taskmanager/taskmanager.component';
 import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { FilterPipe} from './viewtask/filter.pipe';
-
-
+//import { Interceptor, fakeService } from './app.interceptor';
 
 const appRoute : Routes = [
   { path:'addtask', component:AddtaskComponent},
