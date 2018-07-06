@@ -22,7 +22,7 @@ export class UpdatetaskComponent implements OnInit {
   priority : number = 20; 
   parent_id : number; 
   _task_id : number;  
-  //_obj : Task[];  
+  _obj : Task;  
 
   @HostListener('mouseover') mouseover(eventdata : Event)
   {
@@ -37,6 +37,7 @@ export class UpdatetaskComponent implements OnInit {
    {
     this.item = new Task(); 
     this.itemparent  = new Parent();
+    this._obj = new Task();
   }
 
   ngOnInit() {
@@ -74,6 +75,7 @@ export class UpdatetaskComponent implements OnInit {
         {          
           this.item.Parent_Id = this.parent_id; 
            this._task.PostTaskById(this.item).subscribe((taskobj) => {
+            this._obj = taskobj[0]; 
 /*              this._obj = taskobj;             
             this._obj.forEach(element => {
               alert(element.Task_Id);
@@ -86,7 +88,8 @@ export class UpdatetaskComponent implements OnInit {
           this.itemparent.Parent_Task = this.item.parent_name;
           this._task.Postparent(this.itemparent).subscribe((parentobj) => {                                            
             this.item.Parent_Id = parentobj[0].Parent_Id;            
-            this._task.PostTaskById(this.item).subscribe((taskobj) => {                    
+            this._task.PostTaskById(this.item).subscribe((taskobj) => { 
+              this._obj = taskobj[0];                   
                /* this._obj = taskobj;               
               this._obj.forEach(element => {
                 alert(element.Task_Id);
@@ -122,8 +125,7 @@ export class UpdatetaskComponent implements OnInit {
         this.item.priority = this._def[0].priority;        
         this.item.strDate =  this._def[0].strDate;           
         this.item.endDate = this._def[0].endDate;         
-      });     
-      //alert(this._def[0].Task_Id);      
-    }
-    
+      });           
+    }    
+  
 }

@@ -14,15 +14,11 @@ export class Interceptor implements HttpInterceptor {
 
     constructor() { }
 
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        //debugger;
-        //console.log(request);
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {        
 
         return Observable.of(null).mergeMap(() => {                                 
 
-            if (request.url.endsWith('api/Parent') && request.method === 'POST') {
-                //debugger;
-                //console.log(request);
+            if (request.url.endsWith('api/Parent') && request.method === 'POST') {                
                 
                 request = request.clone({url: 'assets/testdata/Parent.json',method:"POST"});   
 

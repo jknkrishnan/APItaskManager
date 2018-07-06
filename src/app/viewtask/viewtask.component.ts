@@ -61,8 +61,11 @@ export class ViewtaskComponent implements OnInit {
   
  end(id : number)
  {  
-  this.delTaskinfo(id);  
-  this.router.navigate([this.router.url]);
+  this.delTaskinfo(id);    
+  setTimeout(() => {
+    this.GetAlltasks();
+    this.GetAllParenttasks();
+  }, 500);
  }
 
 async delTaskinfo(task_id : number) 
@@ -83,7 +86,7 @@ async delTaskinfo(task_id : number)
         this.item.endDate = this._def[0].endDate;         
         this.item.delete_flag = 1;
         this._task.PostTaskById(this.item).subscribe((taskobj) => {  });                     
-     });       
+     });                 
      return this.item;        
  }  
 
