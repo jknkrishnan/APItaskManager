@@ -56,8 +56,7 @@ describe('UpdatetaskComponent', () => {
     setTimeout(() => {     
       expect(component._obj.Task_Id).toBeGreaterThan(0);      
       expect(component._obj.Parent_Id).toBeGreaterThan(0);  
-      expect(component._obj.TaskDesc).toEqual("t1");                
+      expect(component._obj.TaskDesc).toEqual("t1");                      
     }, 5000);
   });
-
 });

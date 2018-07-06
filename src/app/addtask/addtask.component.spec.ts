@@ -21,11 +21,11 @@ describe('AddtaskComponent', () => {
         HttpClientModule        
       ],
       providers: [
-        /*  {
+          {
         provide: HTTP_INTERCEPTORS,
         useClass: Interceptor,
         multi: true 
-      }  */
+      } 
        ]
     })
     .compileComponents();
@@ -41,10 +41,19 @@ describe('AddtaskComponent', () => {
     expect(component).toBeTruthy();
   });
 
- it('On Submitting add task form when parent already exists',fakeAsync (() => {    
-    
-  })); 
+  it('should submit when parent is present', () => {        
+    component.submit();  
+    setTimeout(() => {     
+      expect(component._obj.Task_Id).toBeGreaterThan(0);      
+      expect(component._obj.Parent_Id).toBeGreaterThan(0);            
+    }, 5000);
+  });
 
-  it('On Submitting add task form when parent does not exists',async() => {   
+  it('should submit when parent is not present', () => {     
+    component.submit();  
+    setTimeout(() => {     
+      expect(component._obj.Task_Id).toBeGreaterThan(0);      
+      expect(component._obj.Parent_Id).toBeGreaterThan(0);                            
+    }, 5000);
   }); 
 });

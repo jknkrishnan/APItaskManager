@@ -19,7 +19,7 @@ export class AddtaskComponent implements OnInit {
   priority : number = 20; 
   parent_id : number; 
   task_id : number;  
-  _obj : Task[];
+  _obj : Task;
 
   @HostListener('mouseover') mouseover(eventdata : Event)
   {
@@ -64,6 +64,7 @@ export class AddtaskComponent implements OnInit {
         {          
           this.item.Parent_Id = this.parent_id; 
           this._task.PostTask(this.item).subscribe((taskobj) => {     
+            this._obj = taskobj[0];
             /* this.someMethod(taskobj);
               this._obj = taskobj;
               this._obj.forEach(element => {
@@ -77,6 +78,7 @@ export class AddtaskComponent implements OnInit {
           this._task.Postparent(this.itemparent).subscribe((parentobj) => {                                            
             this.item.Parent_Id = parentobj[0].Parent_Id;
             this._task.PostTask(this.item).subscribe((taskobj) => {   
+              this._obj = taskobj[0];
               /* this.someMethod(taskobj);
                this._obj = taskobj;
               this._obj.forEach(element => {
